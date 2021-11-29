@@ -9,9 +9,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class TestController extends AbstractController
 {
 
-    // /**
-    //  * @
-    //  */
     #[Route('/test', name: 'test')]
     public function index(): Response
     {
@@ -26,7 +23,7 @@ class TestController extends AbstractController
         ]);
     }
 
-    #[Route("random/{max}", name:"random_number")]
+    #[Route("/random/{max}", name:"random_number")]
    public function number($max)
    {
        $number = random_int(0, $max);
@@ -45,7 +42,7 @@ class TestController extends AbstractController
        ]);
    }
 
-   #[Route("testvar", name:"var")]
+   #[Route("/testvar", name:"var")]
    public function  testVarAction()
    {
        $arr = array("name"=>"serri", "age" =>30); // here we create a simple array have keys and values
@@ -57,5 +54,17 @@ class TestController extends AbstractController
    {
        $text = 'Hello World!';
        return   $this->render('test/helloworld.html.twig', array('text' =>$text));
+   }
+
+   #[Route("/child", name:"child_page")]
+   public function childAction()
+   {
+       return $this->render('test/child.html.twig');
+   }
+
+   #[Route("/admin", name:"admin")]
+   public function  adminAction()
+   {
+        return $this->render('test/admin.html.twig', []); // this is the way how to send a variable from php (variable you created in the controller) to the twig file
    }
 }

@@ -1,43 +1,51 @@
-{{ varName.name }} <br>
+{% extends "base.html.twig" %}
 
-{{ varName.age }}
+{% block body %}
+	{{ varName.name }}
+	<br>
 
-<br>
-{% set foo1 = 'foo' %}  {{ foo1 }} {# to print the variable foo #}
+	{{ varName.age }}
 
-
-{% set foo2 = [1, 2] %} {{ foo2[ 0] }}
-
-{% set foo3 = {'foo' : 'bar'} %} {{ foo3.foo }}
-
-<br>
-
-{% set sizes = [34, 36, 38 , 40, 42] %}
+	<br>
+	{% set foo1 = 'foo' %}
+	{{ foo1 }}
+	{# to print the variable foo #}
 
 
-{{ sizes|filter(v => v > 38)|join(', ') }}
+	{% set foo2 = [1, 2] %}
+	{{ foo2[ 0] }}
 
-{# output 40, 42 #}
-<br>
+	{% set foo3 = {'foo' : 'bar'} %}
+	{{ foo3.foo }}
 
-{{ 'This text becomes uppercase' |upper }}
-<br>
-{% for i in range(0, 3) %}
+	<br>
 
-{{ i }},
-
-{% endfor %}
-<br>
+	{% set sizes = [34, 36, 38 , 40, 42] %}
 
 
-{% for i in range(low=1, high=10, step=2) %}
+	{{ sizes|filter(v => v > 38)|join(', ') }}
 
-{{ i }},
+	{# output 40, 42 #}
+	<br>
 
-{% endfor %}
-<br>
+	{{ 'This text becomes uppercase' |upper }}
+	<br>
+	{% for i in range(0, 3) %}
 
-{% set users = [
+		{{ i }},
+
+	{% endfor %}
+	<br>
+
+
+	{% for i in range(low=1, high=10, step=2) %}
+
+		{{ i }},
+
+	{% endfor %}
+	<br>
+
+	{% set users = [
 
     {
 
@@ -60,23 +68,23 @@
 ] %}
 
 
-{% if users|length > 0 %}
+	{% if users|length > 0 %}
 
-<h1>Members</h1>
+		<h1>Members</h1>
 
-<ul>
+		<ul>
 
-{% for user in users %}
+			{% for user in users %}
 
-<li>{{ user.name }}</li>
+				<li>{{ user.name }}</li>
 
-{% endfor %}
+			{% endfor %}
 
-</ul>
-
-
-{% endif %}<br>
-
-{# {{ include('user.html') }} #}
+		</ul>
 
 
+	{% endif %}<br>
+
+	{# {{ include('user.html') }} #}
+
+{% endblock %}

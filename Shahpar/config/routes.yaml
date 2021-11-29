@@ -13,3 +13,7 @@ user:
    controller: App\Controller\TestController::displayUser
    defaults:
     name: "Marry"
+
+# testvare:
+#    path: /testvare
+#    controller: App\Controller\TestController::testVareAction
